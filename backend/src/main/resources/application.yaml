@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: book-community
+  datasource:
+    url: jdbc:postgresql://${DB_URL}:${DB_PORT}/${DB_NAME}/?currentSchema=${DB_SCHEMA}
+    username: postgres
+    password: thabete321
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  security:
+    jwt:
+      access-token-expiration: 86400000 #24 hours for local, 15 minutes recommanded for production
+      refresh-token-expiration: 604800000 # 7 days
+    disposable-email: mailinator, 10minutemail, tempmail, throwawaymail, yopmail, fakeinbox, trashmail, sharklasers, dispostable, getnada, maildrop, mintemail, mohmal, temp-mail, tempinbox, mailnesia, guerrillamail
+
+
+
+
+
+
+
+
+
