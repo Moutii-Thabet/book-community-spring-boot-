@@ -128,10 +128,7 @@ export default function NewPasswordPage() {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   try {
-    const data = await getResetPasswordPermission(
-      encodeURIComponent(params.resetToken!)
-    );
-
+    const data = await getResetPasswordPermission(params.resetToken!);
     return data;
   } catch (error) {
     const { message } = error as Error;

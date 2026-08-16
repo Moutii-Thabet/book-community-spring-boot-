@@ -15,19 +15,19 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Entity
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="ID")
-    private int id;
+    private String id;
 
 
     @CreatedDate

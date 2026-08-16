@@ -2,6 +2,7 @@ package com.moutii.book_community.security;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,7 +32,7 @@ public class SecurityConfig {
 
 
 
-
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
 
         return http
@@ -45,4 +46,5 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
+
 }

@@ -8,6 +8,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User,String> {
 
+    Optional<User> findByPwResetToken(String resetToken);
     Optional<User> findByEmailIgnoreCase(String username);
     boolean existsByEmailIgnoreCase(String username);
 

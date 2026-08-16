@@ -49,7 +49,7 @@ public class User implements UserDetails {
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            mappedBy = "USERS"
+            mappedBy = "creator"
     )
     private List<Book> books;
 

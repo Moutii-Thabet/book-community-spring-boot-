@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name="BOOKS")
 public class Book extends BaseEntity {
 
     @Column(name="TITLE",nullable = false)
@@ -35,7 +34,9 @@ public class Book extends BaseEntity {
     @Lob
     private byte[] imageData;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="CREATOR_ID")
-    private User creatorId;
+    private User creator;
+
+
 }
