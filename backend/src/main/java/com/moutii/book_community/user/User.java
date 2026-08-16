@@ -29,7 +29,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="ID")
-    private int id;
+    private String id;
 
     @Column(name="EMAIL",nullable = false)
     private String email;
@@ -39,6 +39,12 @@ public class User implements UserDetails {
 
     @Column(name="PASSWORD",nullable = false)
     private String password;
+
+    @Column(name = "PW_RESET_TOKEN", insertable = false)
+    private String pwResetToken;
+
+    @Column(name="PW_RESET_TOKEN_EXPIRATION", insertable = false)
+    private LocalDateTime pwResetTokenExpiration;
 
     @OneToMany(
             cascade = CascadeType.ALL,
