@@ -70,7 +70,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(),request.getPassword())
         );
-        System.out.println("bad credentials");
         final User user = (User) auth.getPrincipal();
         assert user != null;
         final String accessToken = jwtService.generateAccessToken(user.getUsername());
@@ -155,7 +154,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public AuthenticationResponse newPassword(NewPasswordRequest request) {
         final User user = userRepo.findById(request.getUserId())
-                .orElseThrow(()->new BusinessException(ErrorCode.USER_NOT_FOUND,request.getUserId()));
+                .orElseThrow(()->new BusinessException(ErrorCode.USER_NOT_FOUND));
         if(!user.getPwResetToken().equals(request.getToken()) ||
                 user.getPwResetTokenExpiration().isBefore(LocalDateTime.now())) {
             throw new RuntimeException("Invalid reset Token");

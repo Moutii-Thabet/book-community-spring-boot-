@@ -8,8 +8,10 @@ public enum ErrorCode {
     USERNAME_NOT_FOUND("USERNAME_NOT_FOUND","username %s not found" , HttpStatus.NOT_FOUND),
     PASSWORD_CONFIRM_MISMATCH("PASSWORD_CONFIRM_MISMATCH","Password and confirm password must be equal" ,HttpStatus.BAD_REQUEST ),
     USERNAME_ALREADY_EXISTS("USERNAME_ALREADY_EXISTS","Username already exists in the database" ,HttpStatus.BAD_REQUEST ),
-    USER_NOT_FOUND("USER_NOT_FOUND","User not found with Id = %s" ,HttpStatus.NOT_FOUND )
-    ;
+    USER_NOT_FOUND("USER_NOT_FOUND","User not found with Id = %s" ,HttpStatus.NOT_FOUND ),
+    BAD_CREDENTIALS("BAD_CREDENTIALS","Bad credentials" , HttpStatus.BAD_REQUEST),
+    USER_DISABLED("USER_DISABLED","User is disabled" ,HttpStatus.UNAUTHORIZED ),
+    INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR","Internal server error" ,HttpStatus.INTERNAL_SERVER_ERROR );
 
 
     private final String code;

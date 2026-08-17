@@ -50,8 +50,8 @@ public class AuthenticationController {
 
     @PostMapping("/resetpw")
     public ResponseEntity<AuthenticationResponse> resetPassword(
-            @RequestBody
             @Valid
+            @RequestBody
             final ResetPasswordRequest request
             ) {
         return ResponseEntity.ok(this.authService.resetPassword(request));
@@ -68,8 +68,8 @@ public class AuthenticationController {
 
     @PostMapping("/newpw")
     public ResponseEntity<AuthenticationResponse> newPassword(
-            @RequestBody
             @Valid
+            @RequestBody
             final NewPasswordRequest request
             ) {
         return ResponseEntity.ok(this.authService.newPassword(request));
