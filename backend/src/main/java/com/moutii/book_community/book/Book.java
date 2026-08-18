@@ -1,5 +1,6 @@
 package com.moutii.book_community.book;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.moutii.book_community.common.BaseEntity;
 import com.moutii.book_community.user.User;
 import jakarta.persistence.*;
@@ -24,7 +25,10 @@ public class Book extends BaseEntity {
     @Column(name="DESCRIPTION",nullable = false)
     private String description;
 
-    @Column(name="IMAGE_NAME",nullable = false)
+    @Column(name="RATING", nullable = false)
+    private Integer rating;
+
+    @Column(name="IMAGE_NAME")
     private String imageName;
 
     @Column(name="IMAGE_TYPE",nullable = false)
@@ -34,8 +38,9 @@ public class Book extends BaseEntity {
     @Lob
     private byte[] imageData;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="CREATOR_ID")
+    @JsonManagedReference
     private User creator;
 
 

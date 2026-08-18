@@ -92,13 +92,13 @@ public class ApplicationExceptionHandler {
                             ErrorResponse.ValidationError.builder()
                                     .code(error.getCode())
                                     .field(((FieldError)error).getField())
-                                    .message(error.getDefaultMessage())
+                                    .msg(error.getDefaultMessage())
                                     .build()
                     );
                 });
 
         final ErrorResponse res = ErrorResponse.builder()
-                .validationErrors(errors)
+                .errorData(errors)
                 .build();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
@@ -107,6 +107,7 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(final Exception ex) {
+        System.out.println(ex.getMessage());
 
         final ErrorResponse res = ErrorResponse.builder()
                 .code(ErrorCode.INTERNAL_SERVER_ERROR.getCode())

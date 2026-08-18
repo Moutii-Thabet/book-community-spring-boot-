@@ -147,7 +147,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return ResetPasswordPermissionResponse.builder()
                 .message("Authorized to reset password")
                 .resetToken(resetToken)
-                .userId(user.getId())
+                .userId(user.get_id())
                 .build();
     }
 

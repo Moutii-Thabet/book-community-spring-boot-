@@ -27,12 +27,12 @@ public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="ID")
-    private String id;
+    private String _id;
 
 
     @CreatedDate
     @Column(name = "CREATED_DATE", nullable = false, updatable = false)
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
     @CreatedBy
     @Column(name = "CREATED_BY", nullable = false, updatable = false)
@@ -44,6 +44,6 @@ public class BaseEntity {
 
     @LastModifiedBy
     @Column(name="LAST_MODIFIED_BY",insertable = false)
-    private LocalDateTime lastModifiedDBy;
+    private String lastModifiedDBy;
 
 }

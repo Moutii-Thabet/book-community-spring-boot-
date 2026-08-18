@@ -16,6 +16,6 @@ public class ApplicationAuditorAware implements AuditorAware<String> {
            return Optional.empty();
         }
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return Optional.of(user.getId());
+        return Optional.of(user.get_id());
     }
 }

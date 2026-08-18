@@ -1,6 +1,7 @@
 package com.moutii.book_community.user;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.moutii.book_community.book.Book;
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,7 +30,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="ID")
-    private String id;
+    private String _id;
 
     @Column(name="EMAIL",nullable = false)
     private String email;
@@ -48,9 +49,9 @@ public class User implements UserDetails {
 
     @OneToMany(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
             mappedBy = "creator"
     )
+    @JsonBackReference
     private List<Book> books;
 
     @CreatedDate

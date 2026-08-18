@@ -11,7 +11,9 @@ public enum ErrorCode {
     USER_NOT_FOUND("USER_NOT_FOUND","User not found with Id = %s" ,HttpStatus.NOT_FOUND ),
     BAD_CREDENTIALS("BAD_CREDENTIALS","Bad credentials" , HttpStatus.BAD_REQUEST),
     USER_DISABLED("USER_DISABLED","User is disabled" ,HttpStatus.UNAUTHORIZED ),
-    INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR","Internal server error" ,HttpStatus.INTERNAL_SERVER_ERROR );
+    INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR","Internal server error" ,HttpStatus.INTERNAL_SERVER_ERROR ),
+    BOOK_NOT_FOUND("BOOK_NOT_FOUND","Book not found" ,HttpStatus.NOT_FOUND ),
+    USER_MISMATCH("USER_MISMATCH","Book does not belong th this user" ,HttpStatus.BAD_REQUEST );
 
 
     private final String code;

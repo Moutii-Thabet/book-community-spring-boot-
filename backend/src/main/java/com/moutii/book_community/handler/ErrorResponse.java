@@ -14,7 +14,7 @@ public class ErrorResponse {
 
     private String code;
     private String message;
-    private List<ValidationError> validationErrors;
+    private List<ValidationError> errorData;
 
     @Getter
     @Setter
@@ -25,7 +25,7 @@ public class ErrorResponse {
 
         private String field;
         private String code;
-        private String message;
+        private String msg;
 
     }
 
