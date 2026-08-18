@@ -32,7 +32,7 @@ public class BeansConfig {
     }
 
     @Bean
-    private CorsConfigurationSource configurationSource() {
+    public CorsConfigurationSource configurationSource() {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE","OPTIONS"));
         corsConfig.setAllowedHeaders(List.of("*"));

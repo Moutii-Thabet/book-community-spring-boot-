@@ -14,20 +14,15 @@ export async function createUser(data: Inputs) {
     body: JSON.stringify(data),
   });
 
-  if (res.status === 417) {
-    const error = await res.json();
-    throw error;
+  if(!(res.status===200 || res.status == 201)) {
+      const error = await res.json();
+      throw error;
   }
-  if (res.status === 500) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 201) {
+
     const { message } = await res.json();
     console.log(message);
     return message;
-  }
+
 }
 
 export async function login(data: { email: string; password: string }) {
@@ -38,20 +33,15 @@ export async function login(data: { email: string; password: string }) {
     },
     body: JSON.stringify(data),
   });
-  if (res.status === 417) {
-    const error = await res.json();
-    throw error;
-  }
-  if (res.status === 500 || res.status === 401) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
 
     return resData;
-  }
+
 }
 
 export async function resetPassword(data: { email: string }) {
@@ -62,32 +52,27 @@ export async function resetPassword(data: { email: string }) {
     },
     body: JSON.stringify(data),
   });
-  if (res.status === 404) {
-    const error = await res.json();
-    throw error;
-  }
-  if (res.status === 500) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const { message } = await res.json();
 
     return message;
-  }
+
 }
 
 export async function getResetPasswordPermission(resetToken: string) {
   const res = await fetch("http://localhost:3000/auth/reset/" + resetToken);
-  if (res.status === 500 || res.status === 401) {
-    const { message } = await res.json();
-    throw new Error(message);
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
     return resData;
-  }
+
 }
 
 export async function newPassword(data: {
@@ -102,35 +87,30 @@ export async function newPassword(data: {
     },
     body: JSON.stringify(data),
   });
-  if (res.status === 417) {
-    const error = await res.json();
-    throw error;
-  }
-  if (res.status === 500 || res.status === 401) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
     console.log("data", resData);
 
     return resData;
-  }
+
 }
 
 export async function fetchBooks() {
   const res = await fetch("http://localhost:3000/books");
-  if (res.status === 500) {
-    const { message } = await res.json();
-    throw new Error(message);
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
     console.log(resData);
 
     return resData.books;
-  }
+
 }
 
 export async function fetchUserBooks(signal: AbortSignal, token: string) {
@@ -141,14 +121,14 @@ export async function fetchUserBooks(signal: AbortSignal, token: string) {
     signal,
   });
 
-  if (res.status === 500) {
-    const { message } = await res.json();
-    throw new Error(message);
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
     return resData.books;
-  }
+
 }
 
 export async function addBook(args: { data: FormData; token: string }) {
@@ -161,35 +141,29 @@ export async function addBook(args: { data: FormData; token: string }) {
     body: args.data,
   });
 
-  if (res.status === 417) {
-    const error = await res.json();
-    throw error;
-  }
-  if (res.status === 500 || res.status === 415) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
 
     return resData;
-  }
+
 }
 
 export async function fetchBook(id: string) {
   const res = await fetch("http://localhost:3000/book/" + id);
 
-  if (res.status === 500 || res.status === 404) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
 
     return resData;
-  }
+
 }
 
 export async function editBook(args: {
@@ -205,25 +179,15 @@ export async function editBook(args: {
     body: args.data,
   });
 
-  if (res.status === 417) {
-    const error = await res.json();
-    throw error;
-  }
-  if (
-    res.status === 500 ||
-    res.status === 404 ||
-    res.status === 401 ||
-    res.status === 415
-  ) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
-  if (res.status === 200) {
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
+
     const resData = await res.json();
 
     return resData;
-  }
+
 }
 
 export async function deleteBook(args: { bookId: string; token: string }) {
@@ -234,15 +198,14 @@ export async function deleteBook(args: { bookId: string; token: string }) {
     },
   });
 
-  if (res.status === 500 || res.status === 404 || res.status === 401) {
-    const { message } = await res.json();
-    const error = { message };
-    throw error;
-  }
+  if(!(res.status===200 || res.status == 201)) {
+        const error = await res.json();
+        throw error;
+    }
 
-  if (res.status === 200) {
+
     const resData = await res.json();
 
     return resData;
-  }
+
 }
